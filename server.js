@@ -29,7 +29,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
 //Setup json middleware
 app.use(express.json());
@@ -54,7 +54,7 @@ import userRouter from "./routes/userRouter.js";
 app.use("/api/v1/users", authenticateUser, userRouter);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
 });
 
 //error handle middleware
